@@ -1,5 +1,5 @@
 # vue-layout
-
+模仿vue-element-admin，走了一遍
 ## Project setup
 ```
 npm install
