@@ -13,8 +13,8 @@
         render: function(createElement, context) {
             const vnodes = []
             const { icon, title } = context.props
-            // eslint-disable-next-line no-debugger
-            debugger
+            // // eslint-disable-next-line no-debugger
+            // debugger
             if (icon) {
                 const elHtml = createElement('i', {
                     attrs: {

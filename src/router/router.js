@@ -38,18 +38,18 @@ export const asyncRoutes = [
         path:'/table',
         component:layout,
         redirect: '/table/complex-table',
-        name:'Table',
+        name:'table',
         meta:{
-            title:'Table',
+            title:'table',
             roles:['admin']
         },
         children:[
             {
                 path: 'complex-table',
-                component: () => import('@/page/table/table'),
+                component: () => import('@/page/Table/ComplexTable'),
                 name: 'ComplexTable',
                 meta: {
-                    title: 'complexTable',
+                    title: 'ComplexTable',
                     roles:['admin']
                 }
             }
@@ -99,6 +99,8 @@ export const asyncRoutes = [
             }
         ]
     },
+
+    { path: '*', redirect: '/404', hidden: true }
 ]
 
 const createRouter = () => new Router({

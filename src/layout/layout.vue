@@ -1,7 +1,9 @@
 <template>
     <div  class="app-wrapper">
-        <sidebar class="sidebar-container" /> <!--左侧功能导航栏-->
-        <div>
+<!--        左侧功能导航栏-->
+        <sidebar class="sidebar-container" />
+<!--        主要功能显示区域-->
+        <div class="main-container">
             <app-main/>
         </div>
     </div>

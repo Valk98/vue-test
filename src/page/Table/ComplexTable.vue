@@ -1,12 +1,12 @@
 <template>
    <div class="app-container">
        <div class="filter-container">
-           <el-input v-model="listQuery.title" :placeholder="$t('table.title')" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
-           <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
-               {{ $t('table.search') }}
+           <el-input v-model="listQuery.title" :placeholder="'标题'" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+           <el-button class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
+               {{ '搜索'}}
            </el-button>
            <el-button class="filter-item" style="margin-left: 10px;" type="primary" icon="el-icon-edit" @click="handleCreate">
-               {{ $t('table.add') }}
+               {{ '添加'}}
            </el-button>
        </div>
        <el-table
@@ -19,33 +19,33 @@
          style="width: 100%;"
          @sort-change="sortChange"
        >
-           <el-table-column :label="$t('table.id')" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
+           <el-table-column :label="'序号'" prop="id" sortable="custom" align="center" width="80" :class-name="getSortClass('id')">
                <template slot-scope="{row}">
                    <span>{{ row.id }}</span>
                </template>
            </el-table-column>
-           <el-table-column :label="$t('table.date')" width="150px" align="center">
+           <el-table-column :label="'时间'" width="150px" align="center">
                <template slot-scope="{row}">
                    <span>{{ row.timestamp | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
                </template>
            </el-table-column>
-           <el-table-column :label="$t('table.title')" min-width="150px">
+           <el-table-column :label="'标题'" min-width="100px" align="center">
                <template slot-scope="{row}">
                    <span class="link-type" @click="handleUpdate(row)">{{ row.title }}</span>
                </template>
            </el-table-column>
-           <el-table-column :label="$t('table.author')" width="110px" align="center">
+           <el-table-column :label="'创建者'" width="110px" align="center">
                <template slot-scope="{row}">
                    <span>{{ row.author }}</span>
                </template>
            </el-table-column>
-           <el-table-column :label="$t('table.actions')" align="center" width="230" class-name="small-padding fixed-width">
+           <el-table-column :label="'动作'" align="center" width="230" class-name="small-padding fixed-width">
                <template slot-scope="{row,$index}">
                    <el-button type="primary" size="mini" @click="handleUpdate(row)">
-                       {{ $t('table.edit') }}
+                       {{ '修改' }}
                    </el-button>
                    <el-button v-if="row.status!=='deleted'" size="mini" type="danger" @click="handleDelete(row,$index)">
-                       {{ $t('table.delete') }}
+                       {{ '删除' }}
                    </el-button>
                </template>
            </el-table-column>
@@ -55,19 +55,19 @@
 
        <el-dialog :title="textMap[dialogStatus]" :visible.sync="dialogFormVisible">
            <el-form ref="dataForm" :rules="rules" :model="temp" label-position="left" label-width="70px" style="width: 400px; margin-left:50px;">
-               <el-form-item :label="$t('table.date')" prop="timestamp">
+               <el-form-item :label="'日期'" prop="timestamp">
                    <el-date-picker v-model="temp.timestamp" type="datetime" placeholder="Please pick a date" />
                </el-form-item>
-               <el-form-item :label="$t('table.title')" prop="title">
+               <el-form-item :label="'标题'" prop="title">
                    <el-input v-model="temp.title" />
                </el-form-item>
            </el-form>
            <div slot="footer" class="dialog-footer">
                <el-button @click="dialogFormVisible = false">
-                   {{ $t('table.cancel') }}
+                   {{ '取消' }}
                </el-button>
                <el-button type="primary" @click="dialogStatus==='create'?createData():updateData()">
-                   {{ $t('table.confirm') }}
+                   {{ '确认' }}
                </el-button>
            </div>
        </el-dialog>
@@ -87,7 +87,7 @@
                 tableKey: 0,
                 list: null,
                 total: 0,
-                listLoading: true,
+                listLoading: false,
                 listQuery: {
                     page: 1,
                     limit: 20,
@@ -191,6 +191,3 @@
     }
 </script>
 
-<style scoped>
-
-</style>

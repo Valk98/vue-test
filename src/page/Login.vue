@@ -2,7 +2,7 @@
     <div id="paper">
         <el-form ref="LoginForm" :model="LoginForm" :rules="rules" class="login-container" label-position="left"
                  label-width="0px" v-loading="loading">
-            <h3 class="login_title">登录</h3>
+            <h3 class="login_title">欢迎</h3>
             <el-form-item prop="name">
                 <el-input type="text" v-model="LoginForm.name"
                           auto-complete="off" placeholder="账号"></el-input>
@@ -11,10 +11,8 @@
                 <el-input type="password" v-model="LoginForm.password"
                           auto-complete="off" placeholder="密码" @keyup.enter.native="loginEnterFun"></el-input>
             </el-form-item>
-            <el-checkbox class="login_remember" v-model="checked"
-                         label-position="left"><span style="color:#505458">记住密码</span></el-checkbox>
-            <el-form-item style="width: 100%">
-                <el-button type="primary" style="width:40%;background:#505458;border: none" @click=" Login('LoginForm')">登录</el-button>
+            <el-form-item style="width: 100%" class="login_button">
+                <el-button type="primary" style="width:40%;border: none" @click=" Login('LoginForm')">登录</el-button>
             </el-form-item>
         </el-form>
     </div>
@@ -92,8 +90,7 @@
         text-align: center;
         color: #505458;
     }
-    .login_remember {
-        margin: 0px 0px 35px 0px;
-        text-align: left;
+    .login_button {
+        text-align: center;
     }
 </style>
